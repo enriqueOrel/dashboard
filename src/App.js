@@ -9,13 +9,10 @@ import './App.css';
 
 import { useStateContext } from './contexts/ContextProvider';
 
-// Este es la estructura principal della pagina, en el cual se esecifican los elementos necesarios la navegacion desde 
-// la pagina Index a cualuier otra pagina existente 
 const App = () => {
   const { setCurrentColor, setCurrentMode, currentMode, activeMenu, currentColor, themeSettings, setThemeSettings } = useStateContext();
 
   useEffect(() => {
-
     const currentThemeColor = localStorage.getItem('colorMode');
     const currentThemeMode = localStorage.getItem('themeMode');
     if (currentThemeColor && currentThemeMode) {
@@ -23,7 +20,6 @@ const App = () => {
       setCurrentMode(currentThemeMode);
     }
   }, []);
-
 
   return (
     <div className={currentMode === 'Dark' ? 'dark' : ''}>
@@ -104,22 +100,3 @@ const App = () => {
 };
 
 export default App;
-
-
-/*
-Este código es un componente de React que actúa como el componente principal de la aplicación. Utiliza el enrutamiento de React Router para manejar diferentes rutas y mostrar diferentes páginas en la aplicación.
-
-El componente hace uso de los siguientes conceptos de React:
-
-useEffect: un hook que permite ejecutar un efecto secundario después de renderizar el componente. En este caso, se utiliza para establecer el modo de tema y el color actual del tema en función de los valores guardados en el almacenamiento local.
-useStateContext: un hook que permite acceder a las funciones y estados definidos en el contexto de la aplicación. En este caso, se utiliza para acceder a las funciones que cambian el modo de tema y el color, y al estado actual de estos valores.
-Además, el componente hace uso de los siguientes componentes y librerías:
-
-BrowserRouter, Routes, Route de React Router: permiten manejar diferentes rutas y mostrar diferentes páginas en la aplicación.
-FiSettings de React Icons: un ícono para el botón de configuración.
-TooltipComponent de Syncfusion: un componente de tooltip para mostrar el título en el botón de configuración.
-Navbar, Footer, Sidebar, ThemeSettings: componentes personalizados que se utilizan en la aplicación.
-Ecommerce, Orders, Calendar, Employees, Stacked, Pyramid, Customers, Kanban, Line, Area, Bar, Pie, Financial, ColorPicker, ColorMapping, Editor: páginas de la aplicación.
-'./App.css': un archivo CSS que se aplica a la aplicación.
-En general, el componente se encarga de la estructura general de la aplicación, así como de la gestión del enrutamiento y del estado del tema y el color.
-*/
